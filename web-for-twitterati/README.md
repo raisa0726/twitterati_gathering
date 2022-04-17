@@ -1,4 +1,4 @@
-これは [Next.js](https://nextjs.org/) で自動実行された [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)のプロジェクトです.
+これは [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) で自動実行された [Next.js](https://nextjs.org/)　のプロジェクトです.
 
 ## Getting Started
 
