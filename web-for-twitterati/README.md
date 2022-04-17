@@ -1,4 +1,4 @@
-これは [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) で自動実行された [Next.js](https://nextjs.org/)　のプロジェクトです.
+これは [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) で自動実行された [Next.js](https://nextjs.org/) のプロジェクトです.
 
 ## Getting Started
 
@@ -10,7 +10,7 @@ yarn dev
 
 ブラウザで結果を確認する: [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+ページの編集は `pages/index.tsx` を修正することで開始することができます。ファイルを編集すると、ページも自動的に更新されます.
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) は [http://localhost:3000/api/hello](http://localhost:3000/api/hello) にアクセスできます.
 エンドポイントは `pages/api/hello.ts`で編集できます.
