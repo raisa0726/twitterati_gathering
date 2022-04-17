@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+これは [Next.js](https://nextjs.org/) で自動実行された [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)のプロジェクトです.
 
 ## Getting Started
 
@@ -30,4 +30,4 @@ Next.jsの詳細については、以下のリソースを参照してくださ�
 
 Next.jsのアプリをデプロイする最も簡単な方法は、Next.jsの制作者が提供する [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) を使用することです.
 
-詳しくはこちら [Next.js deployment documentation](https://nextjs.org/docs/deployment) を確認してください.
+詳しくはこちらの [Next.js deployment documentation](https://nextjs.org/docs/deployment) を確認してください.
