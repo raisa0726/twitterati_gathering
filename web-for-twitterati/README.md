@@ -1,6 +1,6 @@
 これは [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) で自動生成された [Next.js](https://nextjs.org/) のプロジェクトです.
 
-## Getting Started
+## 始めるために
 
 まず, 開発サーバーの実行:
 
