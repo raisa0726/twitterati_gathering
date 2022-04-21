@@ -1,0 +1,37 @@
+.main{
+  height: 100%;
+  width: 100%;
+  background-color: whitesmoke;
+}
+
+.space{
+  height: 100px;
+  width: 100%;
+  background-color: whitesmoke;
+}
+
+.canvas{
+  height: 80%;
+  width: 90%;
+  margin: 0 5%;
+  padding: 30px;
+  background-color: white;
+}
+
+.timer{
+  font-size: 30px;
+  text-align: center;
+  padding-top: 50px;
+  font-weight: bold;
+  font-family: 'Times New Roman';
+}
+
+.btns{
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.btn{
+  margin: 0 5px !important; 
+}
