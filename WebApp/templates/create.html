@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 
 {% block header %}
-  <a href="/home">ホーム</a>　
-  ID : {{ (current_user.id)+10000 }}　
-  NAME : {{ (current_user.master_name) }}
 {% endblock %}
 
 {% block content %}
@@ -12,13 +9,16 @@
 <div class="main">
   <div class="space"></div>
   <div class="canvas">
-    <h1>新規登録</h1>
+    <h1>グループ作成</h1>
     <form method="POST">
       <div class="form-group">
-        <input type="hidden" name="master_id" value={{ (current_user.id)+10000 }}>
-        <label for="name" class="form-label">名前</label>
-        <input type="text" name="name" class="form-control">
-        <br>
+        <input type="hidden" name="user_id" value={{ current_user.user_id }}>
+        <input type="hidden" name="user_name" value={{ current_user.user_name }}>
+        <input type="hidden" name="user_password" value={{ current_user.user_password }}>
+        <label for="group_name" class="form-label">グループ名</label>
+        <input type="text" name="group_name" class="form-control"><br>
+        <label for="group_password" class="form-label">グループパスワード</label>
+        <input type="password" name="group_password" class="form-control"><br>
         <button type="button" class="btn btn-outline-primary"><input type="submit" value="登録"></button>
       </div>
     </form>
