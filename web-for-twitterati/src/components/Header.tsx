@@ -15,14 +15,19 @@ const HeaderWrapper = styled.header`
   align-items: center;
   background: #e2e7ff;
 `
+const HouseArea = styled.div`
+  margin: 0 5%;
+`
 
 const Header: VFC = () => {
   return(
     <HeaderWrapper>
       <Title>オヤの立ち入りにオヤガード</Title>
-      <Link href="/">
-        <FontAwesomeIcon icon={faHouse} />
-      </Link>
+      <HouseArea>
+        <Link href="/">
+          <FontAwesomeIcon icon={faHouse} />
+        </Link>
+      </HouseArea>
     </HeaderWrapper>
   )
 }
