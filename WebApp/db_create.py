@@ -1,7 +1,8 @@
-from app import db, User
+from app import db
 from werkzeug.security import generate_password_hash
 
 #データベース作成
+from app import db
 db.create_all()
 
 #スーパーアドミンの作成
