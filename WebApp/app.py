@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-#!/usr/bin/env python3
 from flask import Flask
 from flask import render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
@@ -139,7 +137,7 @@ def about():
   return render_template('about.html')
 
 if __name__ == "__main__":
-=======
+
 from flask import Flask
 from flask import render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
@@ -320,5 +318,5 @@ def about():
   return render_template('about.html')
 
 if __name__ == "__main__":
->>>>>>> main
+
   app.run(debug=True)
