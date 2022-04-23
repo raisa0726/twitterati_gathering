@@ -26,3 +26,82 @@ a {
   display: inline-block;
   height: 1.5em;
 }
+
+.area{
+  margin: 1em;
+}
+
+.form-area{
+  margin: 1em;
+}
+
+.btn-area{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn,
+div.btn,
+button.btn {
+  font-size: 1em;
+  font-weight: 700;
+  margin: 0 0.2em;
+  padding: 0.4em 0.5em;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+}
+div.btn-flat {
+  overflow: hidden;
+
+  color: #fff;
+  border-radius: 0;
+  background: #000;
+}
+div.btn-flat span {
+  position: relative;
+}
+div.btn-flat:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 160em;
+  height: 168em;
+  content: "";
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  background: #00b7ee;
+}
+div.btn-flat:hover:before {
+  -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+
+.link-area::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  content: '';
+  width: 100%;
+  background: #333;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform .3s;
+}
+.link-area:hover::after {
+  transform: scale(1, 1);
+}

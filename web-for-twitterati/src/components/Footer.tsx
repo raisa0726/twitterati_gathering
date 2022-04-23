@@ -7,7 +7,7 @@ const FooterWrapper = styled.footer`
   display: flex;
   justify-content: space-between;
   padding: 1em;
-  background: #e2e7ff;
+  background: #3c3c3c;
   width: 100%;
   @media screen and (max-width: 537px) {
     flex-flow: column;
