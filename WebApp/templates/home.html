@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 
 {% block header %}
-  <a href="/home">ホーム</a>　
-  ID : {{ (current_user.id)+10000 }}　
-  NAME : {{ (current_user.master_name) }}
 {% endblock %}
 
 {% block content %}
@@ -11,19 +8,18 @@
 <div class="main">
   <div class="space"></div>
   <div class="canvas">
-    <h1>家族情報</h1>
-    {% for family in families %}
+    <h1>個人情報</h1>
+    {% for user in users %}
       <article>
-        <h2>NAME : {{ family.name }}</h2>
-        <h2>ID : {{ family.id }}</h2>
-        <p>{{ family.created_at }}</p>
-        <a  href="/edit/{{family.id}}" type="button" class="btn btn-outline-primary">編集</a>
-        <a href="/delete/{{family.id}}" type="button" class="btn btn-outline-primary">削除</a>
+        <h2>NAME : {{ user.user_name }}</h2>
+        <h2>ID : {{ user.user_id }}</h2>
+        <p>{{ user.created_at }}</p>
       </article>
       <br>
     {% endfor %}
+    <h1>あなたの参加しているグループ</h1>
     <br>
-    <a href="/create" type="button" class="btn btn-outline-primary">新規作成画面</a>
+    <a href="/create" type="button" class="btn btn-outline-primary">グループ作成</a>
     <a href="/logout" type="button" class="btn btn-outline-primary">ログアウト</a>
   </div>
   <div class="space"></div>
