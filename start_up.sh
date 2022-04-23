@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # python backend start up
-bash -c ./backend/app.py
+cd WebApp
+bash -c ./app.py
 
 #react
-cd ./web-for-twitterati || exit
-yarn install
+cd ../web-for-twitterati || exit
 yarn start
