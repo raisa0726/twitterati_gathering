@@ -10,7 +10,7 @@ const Home: NextPage = () => {
   return (
     <Area>
       <h1>Hello! User1</h1>
-      <div>
+      <div className='link-area'>
         <Link href="/group">
           グループ一覧
         </Link>

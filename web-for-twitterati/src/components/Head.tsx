@@ -14,6 +14,7 @@ const Head: VFC<Props> = (props) => {
   return (
     <NextHead>
       <title>{title}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name='application-name' content='MyTemplate' />
       <meta name="description" content={ EXPLANATION } />
       <meta property="og:type" content="website" />
