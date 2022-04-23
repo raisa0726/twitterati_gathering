@@ -17,6 +17,7 @@ const HeaderWrapper = styled.header`
 `
 const HouseArea = styled.div`
   margin: 0 5%;
+  cursor: pointer;
 `
 
 const Header: VFC = () => {

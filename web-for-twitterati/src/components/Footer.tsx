@@ -37,9 +37,9 @@ const Footer: VFC = () => {
       <Developers>
         <FontAwesomeIcon icon={faTwitter} />
         <a href='https://twitter.com/kibidango_py'>@kibidango_py</a>
-        <a href='@kibidango_py'>@kei_r14</a>
-        <a href='@kei_r14'>@yat0i_kit</a>
-        <a href='@yat0i_kit'>@SC_Raisa</a>
+        <a href='https://twitter.com/kei_r14'>@kei_r14</a>
+        <a href='https://twitter.com/yat0i_kit'>@yat0i_kit</a>
+        <a href='https://twitter.com/SC_Raisa'>@SC_Raisa</a>
       </Developers>
     </FooterWrapper>
   )
