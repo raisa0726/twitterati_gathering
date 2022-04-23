@@ -18,8 +18,19 @@
       <br>
     {% endfor %}
     <h1>あなたの参加しているグループ</h1>
+    {% for group in groups %}
+      <article>
+        <h2>GROUP NAME : {{ group.group_name }}</h2>
+        <h2>GROUP ID : {{ group.group_id }}</h2>
+        <p>{{ group.created_at }}</p>
+        <a href="/edit/{{group.group_id}}" type="button" class="btn btn-outline-primary">編集</a>
+        <a href="/delete/{{group.group_id}}" type="button" class="btn btn-outline-primary">削除</a>
+      </article>
+      <br>
+    {% endfor %}
     <br>
     <a href="/create" type="button" class="btn btn-outline-primary">グループ作成</a>
+    <a href="/join" type="button" class="btn btn-outline-primary">グループに入る</a>
     <a href="/logout" type="button" class="btn btn-outline-primary">ログアウト</a>
   </div>
   <div class="space"></div>
