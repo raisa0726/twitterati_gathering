@@ -1,15 +1,10 @@
 import type { NextPage } from 'next'
-import styled from 'styled-components'
-
-const Area = styled.div`
-  margin: 1em;
-`
 
 const Group: NextPage = () => {
   return (
-    <Area>
+    <div className='area'>
       <h1>Your Group1</h1>
-    </Area>
+    </div>
   )
 }
 

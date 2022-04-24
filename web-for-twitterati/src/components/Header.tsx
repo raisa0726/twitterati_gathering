@@ -1,4 +1,4 @@
-import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import { faCircleUser, faHouse, faRightToBracket, faUserPlus, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import { VFC } from 'react'
@@ -14,38 +14,56 @@ const HeaderWrapper = styled.header`
   justify-content: space-between;
   padding: 1em;
   align-items: center;
-  background: #3c3c3c;
+  @media screen and (max-width: 537px) {
+    flex-flow: column;
+  }
 `
-const HouseArea = styled.div`
+
+const IconArea = styled.div`
+  display: flex;
   margin: 0 5%;
-  cursor: pointer;
   color: white;
+  align-items: center;
+  *{
+    cursor: pointer;
+  }
 `
 
 const Header: VFC = () => {
-  return(
-    <HeaderWrapper>
-      <Title>オヤの立ち入りにオヤガード</Title>
-      <div className='btn-area'>
-        <div className="btn btn-flat">
-          <Link href="/user/login"><span>Login</span></Link>
+  return (
+    <>
+      <HeaderWrapper>
+        <Title>オヤの立ち入りにオヤガード</Title>
+        <div className='btn-area'>
+          <IconArea>
+            <Link href="/user/login">
+              <FontAwesomeIcon icon={faRightToBracket} />
+            </Link>
+          </IconArea>
+          <IconArea>
+            <Link href="/user/signup">
+              <FontAwesomeIcon icon={faUserPlus} />
+            </Link>
+          </IconArea>
+          <IconArea>
+            <Link href="/user/index">
+              <FontAwesomeIcon icon={faCircleUser} />
+            </Link>
+          </IconArea>
+          <IconArea>
+            <Link href="/user/logout">
+            <FontAwesomeIcon icon={faRightFromBracket} />
+            </Link>
+          </IconArea>
+          <IconArea>
+            <Link href="/">
+              <FontAwesomeIcon icon={faHouse} />
+            </Link>
+          </IconArea>
         </div>
-        <div className="btn btn-flat">
-          <Link href="/user/signup"><span>新規登録</span></Link>
-        </div>
-        <div className="btn btn-flat">
-          <Link href="/user/index"><span>ユーザーページ</span></Link>
-        </div>
-        <div className="btn btn-flat">
-          <Link href="/user/logout"><span>ログアウト</span></Link>
-        </div>
-      </div>
-      <HouseArea>
-        <Link href="/">
-          <FontAwesomeIcon icon={faHouse} />
-        </Link>
-      </HouseArea>
-    </HeaderWrapper>
+      </HeaderWrapper>
+      <div className='row-line' />
+    </>
   )
 }
 

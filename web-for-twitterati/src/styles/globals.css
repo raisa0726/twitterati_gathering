@@ -3,12 +3,21 @@ body {
   padding: 0;
   margin: 0;
   width: 100%;
+  min-height: 100vh;
+  z-index: 50;
+  background-color:#15202B;
+  color: white;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-
-footer {
-  position: absolute;
+main{
+  display: flex;
+  flex: 1;
+  height: auto !important;
+  height: 100%;
+}
+footer{
+  position: fixed;
   bottom: 0;
   width: 100%;
 }
@@ -17,39 +26,54 @@ a {
   text-decoration: none;
   align-items: center;
 }
-
+.row-line{
+  background-color: #38444d;
+  height: 1px;
+  width: 100%;
+}
+.col-line{
+  background-color: #38444d;
+  width: 1px;
+  height: 100%;
+}
 * {
   box-sizing: border-box;
 }
-
+@media screen and (max-width: 537px) {
+  .btn-area{
+    flex-flow: column;
+  }
+}
 .svg-inline--fa {
   display: inline-block;
   height: 1.5em;
 }
 
+.form-group{
+  margin: 0.3rem;
+}
+.form-group >*{
+  margin: 5px;
+}
 .area{
-  margin: 1em;
+  padding: 1em;
 }
-
-.form-area{
-  margin: 1em;
-}
-
 .btn-area{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end
 }
-
+button:hover, button>*:hover{
+  cursor: pointer;
+}
 .btn,
 div.btn,
 button.btn {
   font-size: 1em;
   font-weight: 700;
-  margin: 0 0.2em;
+  margin: 0.3rem;
   padding: 0.4em 0.5em;
   position: relative;
   display: inline-block;
-  cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -60,15 +84,14 @@ button.btn {
   vertical-align: middle;
   text-decoration: none;
   letter-spacing: 0.1em;
-  color: #212529;
+  color: #273340;
   border-radius: 0.5rem;
 }
 div.btn-flat {
   overflow: hidden;
-
   color: #fff;
   border-radius: 0;
-  background: #000;
+  background: #273340;
 }
 div.btn-flat span {
   position: relative;
@@ -84,7 +107,7 @@ div.btn-flat:before {
   transition: all 0.5s ease-in-out;
   -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
   transform: translateX(-98%) translateY(-25%) rotate(45deg);
-  background: #00b7ee;
+  background: #1D9BF0;
 }
 div.btn-flat:hover:before {
   -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
@@ -97,7 +120,7 @@ div.btn-flat:hover:before {
   left: 0;
   content: '';
   width: 100%;
-  background: #333;
+  background: #252E38;
   transform: scale(0, 1);
   transform-origin: left top;
   transition: transform .3s;
@@ -105,3 +128,27 @@ div.btn-flat:hover:before {
 .link-area:hover::after {
   transform: scale(1, 1);
 }
+
+button.btn-submit{
+  background-color: #2C3640;
+  border: none;
+  padding: 5px;
+  border-radius: 9999px;
+}
+input{
+  font-size: 1em;
+  appearance: auto;
+  user-select: none;
+  white-space: pre;
+  align-items: flex-start;
+  text-align: center;
+  cursor: default;
+  background-color: transparent;
+  color: white;
+  padding: 1px 6px;
+  border-width: 0px;
+  border-style: outset;
+  border-color: transparent;
+  border-image: initial;
+}
+

@@ -12,7 +12,7 @@ const SignUp: NextPage = () => {
           <label htmlFor="user_password" className="form-label">パスワード</label>
           <input type="password" name="user_password" className="form-control" />
           <br />
-          <button type="button" className="btn btn-outline-primary">
+          <button type="button" className="btn-submit">
             <input type="submit" value="新規登録" />
           </button>
         </div>

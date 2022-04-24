@@ -10,7 +10,7 @@ const UserEdit: NextPage<Props> = ({ families }) => {
           <label htmlFor="name" className="form-label">名前</label>
           <input type="text" name="name" className="form-control" value={{ families.name }} />
           <br />
-          <button type="button" className="btn btn-outline-primary">
+          <button type="button" className="btn-submit">
             <input type="submit" value="更新" />
           </button>
         </div>
