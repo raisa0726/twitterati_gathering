@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS
-
+from flask_login import LoginManager
 
 # Create various application instances
 # Order matters: Initialize SQLAlchemy before Marshmallow
@@ -12,7 +12,8 @@ db = SQLAlchemy()
 migrate = Migrate()
 ma = Marshmallow()
 cors = CORS()
-
+app = Flask(__name__)
+login_manager = LoginManager()
 
 def create_app():
     """Application-factory pattern"""
@@ -26,5 +27,8 @@ def create_app():
     migrate.init_app(app, db)
     ma.init_app(app)
     cors.init_app(app)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///accounts.db'
+    app.config['SECRET_KEY'] = os.urandom(24)
+    login_manager.init_app(app)
 
     return app

@@ -1,8 +1,4 @@
 #!/bin/sh
 
-# python backend start up
-bash -c ./WebApp/app.py
-
-#react
-cd ../web-for-twitterati || exit
-yarn start
+cd ./web-for-twitterati || exit
+mate-terminal --tab -- bash -c "../backend/run; bash" && mate-terminal --tab -- bash -c "yarn dev; bash"

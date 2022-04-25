@@ -1,12 +1,28 @@
+import { Group } from '@/types';
 import type { NextPage } from 'next'
 import Link from 'next/link'
+import { useEffect, useState } from 'react';
 
 const SignUp: NextPage = () => {
+  // db connect
+  const [users, setUsers] = useState([]);
+  useEffect(()=>{
+    fetch('http://localhost:3000/user',{
+      'methods':'GET',
+      headers : {
+        'Content-Type':'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(response => setUsers(response))
+    .catch(error => console.log(error))
+
+  }, [])
+
   return (
     <div className="area">
-      <Link href="./edit">個人情報</Link>
+      <Link href="./edit">{users.user}さんの情報</Link>
       <h1>あなたの参加しているグループ</h1>
-      <br />
       <div className="link-area">
         <Link href="/group/new">グループ作成</Link>
       </div>
