@@ -18,7 +18,7 @@
       <br>
     {% endfor %}
     <h1>あなたの参加しているグループ</h1>
-    {% for group in groups %}
+    {% for group in user_groups %}
       <article>
         <h2>GROUP NAME : {{ group.group_name }}</h2>
         <h2>GROUP ID : {{ group.group_id }}</h2>

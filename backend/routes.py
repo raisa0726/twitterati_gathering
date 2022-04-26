@@ -1,74 +1,37 @@
-from flask import Flask, jsonify
-from flask import render_template, request, redirect
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin, LoginManager, login_user, logout_user, login_required
+from unittest import result
+from flask import current_app,jsonify,request
+from flask_login import login_required, login_user, logout_user
+from app import create_app,db
+from models import Group, User_Group, User
 from werkzeug.security import generate_password_hash, check_password_hash
-import os
-
-from datetime import datetime
-import pytz
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///accounts.db'
-app.config['SECRET_KEY'] = os.urandom(24)
-db = SQLAlchemy(app)
-
-login_manager = LoginManager()
-login_manager.init_app(app)
 
 read_group_id = 0
 read_user_id = 0
 now_group_id = 1
-class Group(db.Model):
-  group_id = db.Column(db.Integer, primary_key=True, nullable=False)
-  group_name = db.Column(db.String(16), nullable=False, unique=False)
-  group_password = db.Column(db.String(16), nullable=False)
-  created_at = db.Column(db.DateTime, nullable=False, default=datetime.now(pytz.timezone('Asia/Tokyo')))
+# Create an application instance
+app = create_app()
 
-class User_Group(db.Model):
-  id = db.Column(db.Integer, primary_key=True, nullable=False)
-  user_id = db.Column(db.Integer, nullable=False)
-  group_id = db.Column(db.Integer, nullable=False)
-  user_name = db.Column(db.String(16), nullable=False, unique=False)
-  group_name = db.Column(db.String(16), nullable=False, unique=False)
-  user_password = db.Column(db.String(16), nullable=False)
-  group_password = db.Column(db.String(16), nullable=False)
-  created_at = db.Column(db.DateTime, nullable=False, default=datetime.now(pytz.timezone('Asia/Tokyo')))
-
-class User(UserMixin, db.Model):
-  user_id = db.Column(db.Integer, primary_key=True, nullable=False)
-  user_name = db.Column(db.String(16), nullable=False, unique=False)
-  user_password = db.Column(db.String(16), nullable=False)
-  created_at = db.Column(db.DateTime, nullable=False, default=datetime.now(pytz.timezone('Asia/Tokyo')))
-
-
+# Define a route to fetch the avaialable articles
 @login_manager.user_loader
 def load_user(user_id):
   global read_user_id
   read_user_id = int(user_id)
   user_id = User.query.get(int(user_id))
-  return user_id
+  return jsonify(user_id)
 
 @app.route("/")
 def index():
-  return render_template("index.html")
+  return jsonify()
 
-@app.route("/home", methods=["GET", "POST"])
+@app.route("/user", methods=["GET"])
 @login_required
 def home():
-  global read_user_id
-  if request.method == "GET":
-    users = User.query.filter_by(user_id=read_user_id).all()
-    user_groups = User_Group.query.filter_by(user_id=read_user_id).all()
-    user_key = ["user_id","user_name"]
-    user_value = []
-    for user in users:
-      user_value.append(user.user_id)
-      user_value.append(user.user_name)
-    user_data = dict(zip(user_key,user_value))
-    return render_template('home.html',users=users, groups=user_groups)
+	global read_user_id
+	users = User.query.filter_by(user_id=read_user_id).all()
+	groups = User_Group.query.filter_by(user_id=read_user_id).all()
+	return jsonify(users, groups)
 
-@app.route("/signup", methods=["GET", "POST"])
+@app.route("/user/signup", methods=["GET", "POST"])
 def signup():
   if request.method == "POST":
     user_name = request.form.get('user_name')
@@ -76,11 +39,11 @@ def signup():
     user = User(user_name=user_name, user_password=generate_password_hash(user_password, method='sha256'))
     db.session.add(user)
     db.session.commit()
-    return redirect('/login')
+    return jsonify()
   else:
-    return render_template('signup.html')
+    return jsonify()
 
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/user/login", methods=["GET", "POST"])
 def login():
   if request.method == "POST":
     user_id = int(request.form.get('user_id'))
@@ -88,20 +51,19 @@ def login():
     user = User.query.filter_by(user_id=user_id).first()
     if check_password_hash(user.user_password, user_password):
       login_user(user)
-      print("OK")
-      return redirect('/home')
+      return jsonify()
   else:
-    return render_template('login.html')
+    return jsonify()
 
-@app.route("/logout")
+@app.route("/user/logout")
 def logout():
   global read_user_id
   if read_user_id != 0:
     logout_user()
     read_user_id=0
-  return redirect('/')
+  return jsonify()
 
-@app.route("/create", methods=["GET", "POST"])
+@app.route("/user/create", methods=["GET", "POST"])
 @login_required
 def create():
   global now_group_id
@@ -122,11 +84,11 @@ def create():
     user_group = User_Group(user_id=user_id, group_id=group_id, user_name=user_name, group_name=group_name, user_password=user_password, group_password=group_password)
     db.session.add(user_group)
     db.session.commit()
-    return redirect('/home')
+    return jsonify()
   else:
-    return render_template('create.html')
+    return jsonify()
 
-@app.route("/join", methods=["GET", "POST"])
+@app.route("/group/join", methods=["GET", "POST"])
 @login_required
 def join():
   if request.method == "POST":
@@ -142,11 +104,11 @@ def join():
       user_group = User_Group(user_id=user_id, group_id=group_id, user_name=user_name, group_name=group_name, user_password=user_password, group_password=group_password)
       db.session.add(user_group)
       db.session.commit()
-      return redirect('/home')
+      return jsonify()
   else:
-    return render_template('join.html')
+    return jsonify()
 
-@app.route("/edit/<int:group_id>", methods=["GET", "POST"])
+@app.route("/group/edit/<int:group_id>", methods=["GET", "POST"])
 @login_required
 def edit(group_id):
   global read_user_id
@@ -154,7 +116,7 @@ def edit(group_id):
   group = Group.query.get(group_id)
   user_group = User_Group.query.filter_by(user_id=user_id,group_id=group_id)
   if request.method == "GET":
-    return render_template('edit.html', group=group)
+    return jsonify()
   elif request.method == "POST":
     group.group_name = request.form.get('group_name')
     group_password = request.form.get('group_password')
@@ -164,9 +126,9 @@ def edit(group_id):
       group.group_password = generate_password_hash(request.form.get('new_group_password'), method='sha256')
       db.session.commit()
       print("更新")
-    return redirect('/home')
+    return jsonify()
 
-@app.route("/delete/<int:group_id>", methods=["GET"])
+@app.route("/group/delete/<int:group_id>", methods=["GET"])
 @login_required
 def delete(group_id):
   global now_group_id
@@ -178,12 +140,11 @@ def delete(group_id):
     db.session.delete(user_group[i])
   db.session.commit()
   now_group_id += 1
-  return redirect('/home')
+  return jsonify()
 
 @app.route("/about")
 def about():
-  return render_template('about.html')
+  return jsonify()
 
 if __name__ == "__main__":
-
   app.run(debug=True)

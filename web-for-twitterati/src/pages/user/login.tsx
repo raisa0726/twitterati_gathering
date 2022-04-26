@@ -1,6 +1,8 @@
 import type { NextPage } from 'next'
+import { useEffect, useState } from 'react';
 
-const Login: NextPage = () => {
+const Login: NextPage = (props) => {
+
   return (
     <div className='area'>
       <h1>Login</h1>
