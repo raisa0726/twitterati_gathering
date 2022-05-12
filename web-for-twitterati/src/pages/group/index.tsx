@@ -6,7 +6,6 @@ const Group: NextPage = () => {
     const [groups, setGroups] = useState([]);
     useEffect(()=>{
       fetch('http://localhost:3000/group',{
-        'methods':'GET',
         headers : {
           'Content-Type':'application/json'
         }
@@ -20,6 +19,11 @@ const Group: NextPage = () => {
   return (
     <div className='area'>
       <h1>Your Group1</h1>
+      <ul>
+        <li>
+          {groups}
+        </li>
+      </ul>
     </div>
   )
 }

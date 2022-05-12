@@ -1,4 +1,3 @@
-import { Group } from '@/types';
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import { useEffect, useState } from 'react';
@@ -8,7 +7,6 @@ const SignUp: NextPage = () => {
   const [users, setUsers] = useState([]);
   useEffect(()=>{
     fetch('http://localhost:3000/user',{
-      'methods':'GET',
       headers : {
         'Content-Type':'application/json'
       }
@@ -21,7 +19,7 @@ const SignUp: NextPage = () => {
 
   return (
     <div className="area">
-      <Link href="./edit">{users.user}さんの情報</Link>
+      <Link href="/user/edit">{users}さんの情報</Link>
       <h1>あなたの参加しているグループ</h1>
       <div className="link-area">
         <Link href="/group/new">グループ作成</Link>
